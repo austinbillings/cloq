@@ -1,0 +1,32 @@
+{
+  "name": "cloq",
+  "version": "0.0.1",
+  "description": "Keep track of that flighty mistress, Time. Try to, anyhow.",
+  "main": "cloq.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austinbillings/cloq.git"
+  },
+  "keywords": [
+    "clock",
+    "time",
+    "logging",
+    "ticking",
+    "testing",
+    "performance"
+  ],
+  "author": "Austin Billings <austin@austinbillings.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/austinbillings/cloq/issues"
+  },
+  "homepage": "https://github.com/austinbillings/cloq#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "underscore": "^1.8.3",
+    "zaq": "0.0.8"
+  }
+}
