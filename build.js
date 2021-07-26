@@ -12,7 +12,7 @@ function stripComments (text) {
 }
 
 const exportsList = `{
-    format,
+    formatDate,
     isBefore,
     isAfter,
     isConcurrent

@@ -5,6 +5,7 @@
   "main": "cloq.js",
   "scripts": {
     "build": "node build.js",
+    "test": "npm run build; mocha",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -27,5 +28,8 @@
     "url": "https://github.com/austinbillings/cloq/issues"
   },
   "homepage": "https://github.com/austinbillings/cloq#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^9.0.3"
+  }
 }

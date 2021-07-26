@@ -7,17 +7,9 @@
 // :locale is
 //      any locale which can be passed to Date.toLocaleDateString
 
-function format (date, givenOptions = 'compact', locale = undefined) {
-    const parsedOptions = typeof givenOptions === 'string'
-        ? newObjectWithKeys(givenOptions.split('-').map(t => t.toLowerCase()), true)
-        : Array.isArray(givenOptions)
-            ? newObjectWithKeys(givenOptions, true)
-            : givenOptions && typeof givenOptions === 'object'
-                ? givenOptions
-                : new Error('givenOptions should be string, array, or object')
-
+function formatDate (date, givenOptions = 'compact', locale = undefined) {
+    const parsedOptions = parseOptions(givenOptions);
     const option = s => parsedOptions[s] === true;
-
     const options = {
         // Formatting =======================================================================
 
@@ -54,7 +46,7 @@ function format (date, givenOptions = 'compact', locale = undefined) {
     const dayOptions = { day: options.precise ? '2-digit' : 'numeric' };
 
     const localeOptions = { ...weekdayOptions, ...yearOptions, ...monthOptions, ...dayOptions };
-    const formattedDate = (new Date(date)).toLocaleDateString(locale, localeOptions);
+    const formattedDate = (new Date(date)).toLocaleDateString(locale || 'en-US', localeOptions);
 
     const ordinalDayPattern = /[^0-9-]([0-9]?[0-9])(?=,| |$)/;
     const splitResults = formattedDate.split(ordinalDayPattern)
@@ -64,6 +56,23 @@ function format (date, givenOptions = 'compact', locale = undefined) {
         : `${preOrdinal || ''} ${ordinal}${options.html ? `<sup>${getOrdinalText(ordinal)}</sup>` : getOrdinalText(ordinal)}${postOrdinal || ''}`
 
     return options.commas ? assembledDate : assembledDate.split(',').join('');
+}
+
+function parseOptions (options) {
+    switch (true) {
+        case Array.isArray(options):
+            return newObjectWithKeys(options, true);
+
+        case typeof options === 'string':
+            const optionKeys = options.split('-').map(opt => opt.toLowerCase());
+            return newObjectWithKeys(optionKeys, true);
+
+        case typeof options === 'object':
+            return options;
+
+        default:
+            throw new Error('cloq: options should be string, array, or object');
+    }
 }
 
 function newObjectWithKeys (keys = [], defaultValue = null) {
