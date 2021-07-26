@@ -2,7 +2,7 @@
   "name": "cloq",
   "version": "1.0.2",
   "description": "Minimalist date and time formatting and comparison",
-  "main": "cloq.js",
+  "main": "index.js",
   "scripts": {
     "build": "node build.js",
     "test": "npm run build; mocha",
