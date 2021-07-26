@@ -1,12 +1,11 @@
-/* @date is
-    anything that can be parsed by Date()
-/* @givenOptions can be
-    a string (options dash-separated),
-    an array (of enabled option names),
-    or an object (options as keys, booleans as values)
-/* @locale is
-    any locale which can be passed to Date.toLocaleDateString
----------------------------------------------------------   */
+// :date is
+//      anything that can be parsed by Date()
+// :givenOptions can be
+//      a string (options dash-separated),
+//      an array (of enabled option names),
+//      or an object (options as keys, booleans as values)
+// :locale is
+//      any locale which can be passed to Date.toLocaleDateString
 
 function format (date, givenOptions = 'compact', locale = undefined) {
     const parsedOptions = typeof givenOptions === 'string'
@@ -104,7 +103,6 @@ function isAfter (dateA, dateB) {
         ? (new Date(dateA)).getTime() > (new Date(dateB)).getTime()
         : (new Date(dateA)).getTime() > Date.now()
 }
-
 
 function isConcurrent (dateA, dateB) {
     return dateB

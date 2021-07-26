@@ -1,7 +1,15 @@
 // build.js
 const fs = require('fs')
 const path = require('path')
-const fileContents = fs.readFileSync(path.resolve(__dirname, 'cloq.js'), 'utf8')
+const fileContents = stripComments(fs.readFileSync(path.resolve(__dirname, 'cloq.js'), 'utf8'))
+
+function stripComments (text) {
+    return text
+        .split('\n')
+        .map(t => t.substring(0, t.indexOf('//') === -1 ? t.length : t.indexOf('//')))
+        .filter(line => line.trim().length)
+        .join('\n')
+}
 
 const exportsList = `{
     format,
