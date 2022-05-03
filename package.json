@@ -1,6 +1,6 @@
 {
   "name": "cloq",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Minimalist date and time formatting and comparison",
   "main": "index.js",
   "scripts": {
