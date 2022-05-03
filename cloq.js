@@ -83,11 +83,17 @@ function newObjectWithKeys (keys = [], defaultValue = null) {
 function getOrdinalText (ordinal = '') {
     switch (ordinal[ordinal.length - 1]) {
         case '1':
-            return 'st';
+            return ordinal.length === 2 && ordinal[0] === '1'
+                ? 'th' // eleventh
+                : 'st';
         case '2':
-            return 'nd';
+            return ordinal.length === 2 && ordinal[0] === '1'
+                ? 'th' // twelfth
+                : 'nd';
         case '3':
-            return 'rd';
+            return ordinal.length === 2 && ordinal[0] === '1'
+                ? 'th' // thirteenth
+                : 'rd';
         case '4':
         case '5':
         case '6':
